@@ -13,7 +13,8 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
-
+% J = (1/(2*m))*(sum(y.^2)); Since theta0 and theta1 are zeros.
+J = (1/(2*m))*(sum((X*theta-y).^2));
 
 
 
