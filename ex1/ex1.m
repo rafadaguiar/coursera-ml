@@ -112,6 +112,7 @@ J_vals = J_vals';
 figure;
 surf(theta0_vals, theta1_vals, J_vals)
 xlabel('\theta_0'); ylabel('\theta_1');
+legend('J of Theta Surface Plot');
 
 % Contour plot
 figure;
@@ -120,3 +121,5 @@ contour(theta0_vals, theta1_vals, J_vals, logspace(-2, 3, 20))
 xlabel('\theta_0'); ylabel('\theta_1');
 hold on;
 plot(theta(1), theta(2), 'rx', 'MarkerSize', 10, 'LineWidth', 2);
+fprintf('Program paused. Press enter to end it.\n');
+pause;
