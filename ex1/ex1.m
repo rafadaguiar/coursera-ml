@@ -64,6 +64,10 @@ computeCost(X, y, theta)
 
 % run gradient descent
 theta = gradientDescent(X, y, theta, alpha, iterations);
+theta2 = gradientDescentMulti(X, y, theta, alpha, iterations);
+
+% fprintf('Theta1 e Theta2: ');
+% fprintf('%f %f \n', theta, theta2);
 
 % print theta to screen
 fprintf('Theta found by gradient descent: ');
