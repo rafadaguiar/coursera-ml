@@ -26,9 +26,13 @@ J = (1/m)*(-log(h)'*y - log(1-h)'*(1-y)) + (lambda/(2*m))*sum(theta(2:end).^2);
 % Jj = (1/m)*(-log(h(2:end))'*y(2:end) - log(1-h(2:end))'*(1-y(2:end))) + (lambda/(2*m))*sum(theta(2:end).^2);
 % J = Jo+Jj;
 
-[i,j] = size(X);
-L = eye(j,j); L(1,1)=0;
-grad = pinv(X'*X + lambda*L)*X'*y;
+% [i,j] = size(X);
+% L = eye(j,j); L(1,1)=0;
+% grad = pinv(X'*X + lambda*L)*X'*y;
+
+o0 = (1/m)*(X(:,1)'*(h-y));
+oj = (1/m)*(X(:,2:end)'*(h-y))+(lambda/m)*theta(2:end);
+grad = [o0;oj];
 
 % =============================================================
 
