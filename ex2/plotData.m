@@ -12,9 +12,16 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+%Admitted
+x1 = X(y==1,1);
+y1 = X(y==1,2);
 
+%Non Admitted
+x2 = X(y==0,1);
+y2 = X(y==0,2);
 
-
+plot(x1,y1,"k+",'LineWidth',2,'Markersize',7);
+plot(x2,y2,"ko",'MarkerFaceColor','y','Markersize',7);
 
 
 
