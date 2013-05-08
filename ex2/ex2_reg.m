@@ -87,7 +87,7 @@ pause;
 initial_theta = zeros(size(X, 2), 1);
 
 % Set regularization parameter lambda to 1 (you should vary this)
-lambda = 1;
+lambda = 1; % Lambda too large -> underfit | lambda too small-> overfit
 
 % Set Options
 options = optimset('GradObj', 'on', 'MaxIter', 400);
