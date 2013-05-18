@@ -55,7 +55,7 @@ X = [ones(m, 1) X];
                 initial_theta, options);
         all_theta(c,:) = o';
     end 
-    all_theta = [all_theta(num_labels,:);all_theta(1:(num_labels-1),:)];
+    % all_theta = [all_theta(num_labels,:);all_theta(1:(num_labels-1),:)];
 
 
 
