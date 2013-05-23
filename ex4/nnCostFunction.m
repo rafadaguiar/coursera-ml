@@ -81,12 +81,32 @@ for i = 1:m
     binaryY(i,y(i)) = 1;  
 end  
 %----------------------%
+%Simple Cost Function
+% for j = 1:size(ho,2) 
+%     J += (1/m)*(-log(ho(:,j))'*binaryY(:,j) - log(1-ho(:,j))'*(1-binaryY(:,j)));
+% end
+
+o1 = Theta1(:,2:end);
+o2 = Theta2(:,2:end);
+%Regularized Cost Function
+% r = 0;
+% for l = 1:size(o1,1)
+%     for c = 1:size(o1,2)
+%         r += o1(l,c)^2;
+%     end 
+% end
+% for l = 1:size(o2,1)
+%     for c = 1:size(o2,2)
+%         r += o2(l,c)^2;
+%     end 
+% end
+r = (sum(sum(o1.^2)) + sum(sum(o2.^2)));
+regularization = (lambda/(2*m))*(r);
+
 for j = 1:size(ho,2) 
     J += (1/m)*(-log(ho(:,j))'*binaryY(:,j) - log(1-ho(:,j))'*(1-binaryY(:,j)));
 end
-
-
-
+J+=regularization;
 
 
 

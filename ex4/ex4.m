@@ -82,7 +82,7 @@ fprintf(['Cost at parameters (loaded from ex4weights): %f '...
 
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
-exit;
+
 
 %% =============== Part 4: Implement Regularization ===============
 %  Once your cost function implementation is correct, you should now
@@ -102,7 +102,7 @@ fprintf(['Cost at parameters (loaded from ex4weights): %f '...
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
-
+exit;
 
 %% ================ Part 5: Sigmoid Gradient  ================
 %  Before you start implementing the neural network, you will first
