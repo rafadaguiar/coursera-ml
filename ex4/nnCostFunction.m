@@ -61,9 +61,29 @@ Theta2_grad = zeros(size(Theta2));
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
-
-
-
+a1 = [ones(m,1) X];
+z2 = a1*Theta1';
+h2 = sigmoid(z2);
+a2 = [ones(size(h2,1),1)  h2];
+z3 = a2*Theta2';
+h3 = sigmoid(z3);
+a3 = h3;
+ho = a3;
+%----------------------%
+% binaryHo = zeros(size(ho));
+% for i = 1:m 
+%     [k,j] = max(ho(i,:));
+%     binaryHo(i,j) = 1;
+% end
+binaryY = zeros(size(ho));
+for i = 1:m 
+    binaryY(i,:) = zeros(1,size(ho,2));
+    binaryY(i,y(i)) = 1;  
+end  
+%----------------------%
+for j = 1:size(ho,2) 
+    J += (1/m)*(-log(ho(:,j))'*binaryY(:,j) - log(1-ho(:,j))'*(1-binaryY(:,j)));
+end
 
 
 

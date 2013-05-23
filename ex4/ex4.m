@@ -82,6 +82,7 @@ fprintf(['Cost at parameters (loaded from ex4weights): %f '...
 
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
+exit;
 
 %% =============== Part 4: Implement Regularization ===============
 %  Once your cost function implementation is correct, you should now
