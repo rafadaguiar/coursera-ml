@@ -20,15 +20,14 @@ grad = zeros(size(theta));
 %
 
 
+% Linear Regression Cost Function with regularization
+h = X*theta;
+regularization = (lambda/(2*m))*sum(theta(2:end).^2);
+J = (1/(2*m))*(sum((h-y).^2)) + regularization;
 
-
-
-
-
-
-
-
-
+o0 = (1/m)*(X(:,1)'*(h-y));
+oj = (1/m)*(X(:,2:end)'*(h-y))+(lambda/m)*theta(2:end);
+grad = [o0;oj];
 
 % =========================================================================
 
