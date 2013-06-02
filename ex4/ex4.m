@@ -102,7 +102,7 @@ fprintf(['Cost at parameters (loaded from ex4weights): %f '...
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
-exit;
+
 
 %% ================ Part 5: Sigmoid Gradient  ================
 %  Before you start implementing the neural network, you will first
@@ -145,7 +145,7 @@ initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
 fprintf('\nChecking Backpropagation... \n');
 
 %  Check gradients by running checkNNGradients
-checkNNGradients;
+%checkNNGradients;
 
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;

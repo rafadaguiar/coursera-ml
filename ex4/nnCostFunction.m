@@ -69,6 +69,7 @@ z3 = a2*Theta2';
 h3 = sigmoid(z3);
 a3 = h3;
 ho = a3;
+
 %----------------------%
 % binaryHo = zeros(size(ho));
 % for i = 1:m 
@@ -81,25 +82,17 @@ for i = 1:m
     binaryY(i,y(i)) = 1;  
 end  
 %----------------------%
-%Simple Cost Function
+
+%Unregularized Cost Function
 % for j = 1:size(ho,2) 
 %     J += (1/m)*(-log(ho(:,j))'*binaryY(:,j) - log(1-ho(:,j))'*(1-binaryY(:,j)));
 % end
 
+
+%Regularized Cost Function
 o1 = Theta1(:,2:end);
 o2 = Theta2(:,2:end);
-%Regularized Cost Function
-% r = 0;
-% for l = 1:size(o1,1)
-%     for c = 1:size(o1,2)
-%         r += o1(l,c)^2;
-%     end 
-% end
-% for l = 1:size(o2,1)
-%     for c = 1:size(o2,2)
-%         r += o2(l,c)^2;
-%     end 
-% end
+
 r = (sum(sum(o1.^2)) + sum(sum(o2.^2)));
 regularization = (lambda/(2*m))*(r);
 
@@ -110,15 +103,18 @@ J+=regularization;
 
 
 
+%BackPropagation
+error3 = ho-binaryY;
+g = sigmoidGradient(z2);
+error2 = ((error3*Theta2).*[ones(size(g,1),1) g])(:,2:end);
+delta2 = error3'*a2;
+delta1 = error2'*a1;
+Theta1_grad += (1/m)*delta1;
+Theta2_grad += (1/m)*delta2;
 
-
-
-
-
-
-
-
-
+%Regularization
+Theta1_grad += [Theta1(:,1) (lambda/m)*o1];
+Theta2_grad += [Theta2(:,1) (lambda/m)*o2];
 
 % -------------------------------------------------------------
 
