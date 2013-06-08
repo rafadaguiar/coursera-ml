@@ -15,20 +15,29 @@ sigma = 0.3;
 % Instructions: Fill in this function to return the optimal C and sigma
 %               learning parameters found using the cross validation set.
 %               You can use svmPredict to predict the labels on the cross
-%               validation set. For example, 
+%               validation set. For example,     
 %                   predictions = svmPredict(model, Xval);
 %               will return the predictions on the cross validation set.
 %
 %  Note: You can compute the prediction error using 
 %        mean(double(predictions ~= yval))
 %
+val = [0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30];
+resp = [];
+for c = val %C
+    for s = val % Sigma
+        x1 = X(:,1); x2 = X(:,2);
+        model = svmTrain(X, y, c, @(x1, x2) gaussianKernel(x1, x2,s)); 
+        predictions = svmPredict(model, Xval);
+        erro = mean(double(predictions ~= yval));
+        resp = [resp ; erro c s];    
+    end
+end
 
-
-
-
-
-
-
+[v,ind] = min(resp);
+resp = resp(ind(1),:);
+C = resp(2);
+sigma = resp(3);
 % =========================================================================
 
 end
