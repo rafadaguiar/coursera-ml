@@ -46,9 +46,16 @@ x = zeros(n, 1);
 %
 %              x = [ 0 0 0 0 1 0 0 0 ... 0 0 0 0 1 ... 0 0 0 1 0 ..];
 %
-%
-
-
+    count = 0;
+    for i = 1:n
+        for j = 1:size(word_indices)
+            if i == word_indices(j)
+                x(i) = 1;
+                count +=1;
+                break;
+            end
+        end
+    end
 
 
 
