@@ -25,10 +25,10 @@ centroids = zeros(K, n);
 %
 % Note: You can use a for-loop over the centroids to compute this.
 %
-
-
-
-
+for k=1:K
+    centroid_points = arrayfun(@(x) find(idx==x),unique(idx),'Un',0){k};
+    centroids(k,:) = (1/size(centroid_points,1))*sum(X(centroid_points,:));
+end
 
 
 
